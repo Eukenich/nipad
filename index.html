@@ -2,17 +2,29 @@
 <html ng-app="nikitaPad" lang="en">
 
 <head>
-    <title>NIKITAPAD</title>
+    <title>NiPad</title>
     <script src="./node_modules/angular/angular.js"></script>
     <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="./node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
-    <link href="./style.css" rel="stylesheet"/>
+    <!--<link href="./style.css" rel="stylesheet"/>-->
     <script>
       angular.module('nikitaPad', [])
-        .controller('npCtrl', function ($scope) {
-          $scope.loaded = (JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
-          $scope.submitText = function (text) {
-            localStorage.saveText = JSON.stringify(text)
+        .controller('npCtrl', function ($scope,$timeout) {
+          //$scope.loaded = (JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
+          $scope.tempLoad='1'
+          $scope.uploadText = function (text) {localStorage.saveText = JSON.stringify(text)}
+          
+          $scope.downloadText = function (text) {
+              
+              text=(JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
+                  
+            
+              console.log(text)
+              $scope.loaded=text
+          }
+          
+          $scope.saveTextLocal= function(text) {
+              localStorage.curText = JSON.stringify(text)
           }
 
         });
@@ -20,12 +32,18 @@
 </head>
 <body data-ng-app="">
 <div class="container" ng-controller="npCtrl">
-{{loaded.length()|json}}
-    <nav class="navbar">
-        <button type="button" class="btn btn-success" ng-click="submitText(loaded)"> Save</button>
-    </nav>
+
+    <div >
+        <button type="button" class="btn btn-primary" ng-click=""><span class="" aria-hidden="true"></span>Menu</button>
+        <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
+        <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+        <button type="button" class="btn btn-danger" ng-click="downloadText(tempLoad)"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span> Load</button>
+        <button type="button" class="btn btn-info" ng-click="uploadText(loaded)"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> Save</button>
+        <button type="button" class="btn btn-default" ng-click=""><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
+        
+    </div>
     <div class="form-group">
-        <textarea class="form-control" ng-model="loaded" cols="30" rows="10"></textarea>
+        <textarea class="form-control" ng-model="loaded" ng-change="saveTextLocal(loaded)"  cols="30" rows="10"></textarea>
     </div>
 
 </div>
