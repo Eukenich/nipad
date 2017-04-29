@@ -4,43 +4,35 @@
 <head>
     <title>NiPad</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-   <!-- <link href="./node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>-->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!--<link href="./style.css" rel="stylesheet"/>-->
-    <script>
-      angular.module('nikitaPad', [])
-        .controller('npCtrl', function ($scope,$timeout) {
-          //$scope.loaded = (JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
-          $scope.tempLoad='1'
-          $scope.uploadText = function (text) {localStorage.saveText = JSON.stringify(text)}
-          
-          $scope.downloadText = function (text) {
-              
-              text=(JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
-              $scope.loaded=text
-          }
-          
-          $scope.saveTextLocal= function(text) {localStorage.curText = JSON.stringify(text)}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
 
-        });
-    </script>
 </head>
 <body data-ng-app="">
 <div class="container" ng-controller="npCtrl">
 
-    <div >
+    <div>
         <button type="button" class="btn btn-primary" ng-click=""><span class="" aria-hidden="true"></span>Menu</button>
-        <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>
-        <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
-        <button type="button" class="btn btn-danger" ng-click="downloadText(tempLoad)"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span> Load</button>
-        <button type="button" class="btn btn-info" ng-click="uploadText(loaded)"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> Save</button>
-        <button type="button" class="btn btn-default" ng-click=""><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button>
-        
+        <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-left"
+                                                                        aria-hidden="true"></span></button>
+        <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-right"
+                                                                        aria-hidden="true"></span></button>
+        <button type="button" class="btn btn-danger" ng-click="downloadText(tempLoad)"><span
+                class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span> Load
+        </button>
+        <button type="button" class="btn btn-info" ng-click="uploadText(loaded)"><span
+                class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> Save
+        </button>
+        <button type="button" class="btn btn-default" ng-click=""><span class="glyphicon glyphicon-info-sign"
+                                                                        aria-hidden="true"></span></button>
+
     </div>
     <div class="form-group">
-        <textarea class="form-control" ng-model="loaded" ng-change="saveTextLocal(loaded)"  cols="30" rows="10"></textarea>
+        <textarea class="form-control" ng-model="loaded" ng-change="saveTextLocal(loaded)" cols="30"
+                  rows="10"></textarea>
     </div>
 
 </div>
