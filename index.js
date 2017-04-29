@@ -1,6 +1,6 @@
-
-angular.module('nikitaPad', [])
-  .controller('npCtrl', function ($scope) {
+﻿
+angular.module('nikitaPad', ['ui.bootstrap.modal'])
+  .controller('npCtrl', function ($scope/*, $uibModal*/) {
     $scope.tempLoad = '1'
 
     $scope.downloadText = function (text) {
@@ -12,19 +12,15 @@ angular.module('nikitaPad', [])
       localStorage.saveText = JSON.stringify(text)
     }
 
-/*
-    fooSvc = angular.injector(['foo']).get('simpleService');
-    var barSvc = angular.injector(['bar']).get('simpleService');
+  $scope.open = function() {
+    $scope.showModal = true;
+  };
 
-    console.log(fooSvc.name)*/
+  $scope.ok = function() {
+    $scope.showModal = false;
+  };
 
-
-
-
-
-
-    $scope.saveTextLocal = function (text) {
-      localStorage.curText = JSON.stringify(text)
-    }
-
-  });
+  $scope.cancel = function() {
+    $scope.showModal = false;
+  };
+    });
