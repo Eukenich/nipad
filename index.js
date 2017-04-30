@@ -1,26 +1,34 @@
-﻿
-angular.module('nikitaPad', ['ui.bootstrap.modal'])
-  .controller('npCtrl', function ($scope/*, $uibModal*/) {
-    $scope.tempLoad = '1'
+﻿angular.module('nikitaPad', ['ui.bootstrap.modal'])
+    .controller('npCtrl', function ($scope) {
+        $scope.localKeys = localStorage.localkeys
+        $scope.texts = (angular.isUndefined($scope.localKeys)) ? [] : $scope.localKeys.split(',')
+        $scope.dist = ''
+        $scope.downloadText = function (textDist) {
+            $scope.dist = textDist
+            $scope.loaded = (JSON.parse(localStorage.getItem($scope.dist))) ? JSON.parse(localStorage.getItem($scope.dist)) : alert('Nothing to download!')
+        }
 
-    $scope.downloadText = function (text) {
-            text = (JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
-      $scope.loaded = text
-    }
+        $scope.addText = function (textLocalKey) {
+            $scope.texts.push(textLocalKey)
+            localStorage.localkeys = $scope.texts
+        }
 
-    $scope.uploadText = function (text) {
-      localStorage.saveText = JSON.stringify(text)
-    }
+        $scope.dellText = function (textLocalKey) {
+            $scope.dist = textLocalKey
+            $scope.texts.splice($scope.texts.indexOf(textLocalKey),1)
+            localStorage.localkeys = $scope.texts
+            localStorage.removeItem($scope.dist)
+        }
 
-  $scope.open = function() {
-    $scope.showModal = true;
-  };
+        $scope.uploadText = function (textLocalKey, text) {
+            $scope.dist = textLocalKey
+            console.log($scope.dist)
+            if (text) {
+                localStorage.setItem($scope.dist, JSON.stringify(text))
+            }
+            else {
+                alert('Text area is empty!')
+            }
+        }
 
-  $scope.ok = function() {
-    $scope.showModal = false;
-  };
-
-  $scope.cancel = function() {
-    $scope.showModal = false;
-  };
     });

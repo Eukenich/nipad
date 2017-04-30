@@ -1,6 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<!--###############
+INDEX.HTML
+###################-->
+<!DOCTYPE html>
 <html ng-app="nikitaPad" lang="en">
-
 <head>
     <title>NiPad</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
@@ -10,82 +12,94 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
+    <script src="index.js"></script>
+
+    <!-- #############################
+                     INDEX.JS
+    #################################-->
     <script>
         angular.module('nikitaPad', ['ui.bootstrap.modal'])
-  .controller('npCtrl', function ($scope/*, $uibModal*/) {
-    $scope.tempLoad = '1'
+            .controller('npCtrl', function ($scope/*, $uibModal*/) {
+                $scope.tempLoad = '1'
 
-    $scope.downloadText = function (text) {
-            text = (JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
-      $scope.loaded = text
-    }
+                $scope.downloadText = function (text) {
+                    text = (JSON.parse(localStorage.saveText)) ? JSON.parse(localStorage.saveText) : ''
+                    $scope.loaded = text
+                }
 
-    $scope.uploadText = function (text) {
-      localStorage.saveText = JSON.stringify(text)
-    }
-
-  $scope.open = function() {
-    $scope.showModal = true;
-  };
-
-  $scope.ok = function() {
-    $scope.showModal = false;
-  };
-
-  $scope.cancel = function() {
-    $scope.showModal = false;
-  };
-    });
+                $scope.uploadText = function (text) {
+                    localStorage.saveText = JSON.stringify(text)
+                }
+            });
     </script>
+    <!--##################################-->
 
 </head>
 <body data-ng-app="">
 <div class="container" ng-controller="npCtrl">
 
     <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">NiPad v0.005 </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <table class="table table-hover" ng-repeat="text in texts">
+                            <tr>
+                                <div class="form-inline">
+                                    <form>
+                                        <input type="text" class="form-control" ng-model="localKey" placeholder="File name...">
+                                        <button type="button" class="btn btn-success btn-xs"
+                                                ng-click="addText(localKey)"><span
+                                                class="glyphicon glyphicon-plus"></span></button>
+                                    </form>
+                                </div>
+                                <td>Name: {{text}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm"
+                                            ng-click="uploadText(text,loaded)"><span
+                                            class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span> Save
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm"
+                                            ng-click="downloadText(text)"><span
+                                            class="glyphicon glyphicon-collapse-down " aria-hidden="true"></span> Load
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                            ng-click="dellText(text)"><span
+                                            class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>Some text in the modal.
-          <button type="button" class="btn btn-info" ng-click="uploadText(loaded)"><span
-                class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> Save
-        </button></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
     </div>
-  </div>
- 
     <div>
-      <!--  <button type="button" class="btn btn-primary" ng-click=""><span class="" aria-hidden="true"></span>Menu</button>  Будет добавлена, когда появится функционал -->
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><span
+                class="glyphicon glyphicon-expand" aria-hidden="true"></span>Menu
+        </button>
         <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-left"
                                                                         aria-hidden="true"></span></button>
         <button type="button" class="btn btn-success" ng-click=""><span class="glyphicon glyphicon-chevron-right"
                                                                         aria-hidden="true"></span></button>
-        <button type="button" class="btn btn-danger" ng-click="downloadText(tempLoad)"><span
-        
-                class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span> Load
-        </button>
-        <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal">Save</button>
         <button type="button" class="btn btn-default" ng-click=""><span class="glyphicon glyphicon-info-sign"
                                                                         aria-hidden="true"></span></button>
-
     </div>
     <div class="form-group">
-        <textarea class="form-control" ng-model="loaded" ng-change="saveTextLocal(loaded)" cols="30"
-                  rows="10"></textarea>
+        <textarea class="form-control" ng-model="loaded.text" cols="30" rows="10"></textarea>
     </div>
-
 </div>
 </body>
 </html>
