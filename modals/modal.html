@@ -1,0 +1,67 @@
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">NiPad v0.006 </h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <table class="table table-hover" ng-repeat="text in texts">
+                        <tr>
+
+                            <div class="form-inline">
+                                <form>
+                                    <input type="text" class="form-control" ng-model="localKey"
+                                           placeholder="File name...">
+                                    <button type="button" class="btn btn-success btn-xs"
+                                            ng-click="addText(localKey)"><span
+                                            class="glyphicon glyphicon-plus"></span></button>
+                                </form>
+                            </div>
+                            <td class="col-xs-2">Name: <label>{{text}} </label></td>
+                            <td>
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="uploadText(text,loaded)"><span
+                                        class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span> Save
+                                </button>
+                            </td>
+                            <td class="col-xs-2">
+                                <button type="button" class="btn btn-default btn-sm"
+                                        ng-click="downloadText(text)"><span
+                                        class="glyphicon glyphicon-collapse-down " aria-hidden="true"></span> Load
+                                </button>
+                            </td>
+                            <td class="col-xs-2">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                        ng-click="dellText(text)"><span
+                                        class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+                                </button>
+                            </td>
+                            <td class="col-xs-5 col-sm-3">
+                                <button id="info" type="button" class="btn btn-sm btn-default"
+                                        ng-click="loadedLength(text); hideInfo = !hideInfo"><span
+                                        class="glyphicon glyphicon-info-sign"
+                                        aria-hidden="true"></span></button>
+                                <div><label ng-show="hideInfo" for="info"> Symbols count: {{textInfo.sym}}</label>
+                                    <label ng-show="hideInfo" for="info"> Words count: {{textInfo.words}}</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

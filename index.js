@@ -40,4 +40,7 @@
       $scope.textInfo.words = (angular.isUndefined(loaded)) ? 0 : loaded.split(' ').length
 
     }
+    $scope.openNewTab=function() {
+
+    }
   });
