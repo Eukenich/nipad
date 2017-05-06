@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="nikitaPad" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Random Numbers</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.6.4/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="adventure.js"></script>
+</head>
+<body data-ng-app="">
+<div class="container" ng-controller="npCtrl">
+    <a href="../index.html">
+        <span class="btn btn-default glyphicon glyphicon-menu-left">Back</span>
+    </a>
+    <div class="text-center">
+
+        <h1><label>{{mathRandom}}</label></h1>
+
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="getRandomSpan()"> Generate
+    </button>
+
+
+</div>
+</body>
+</html>
