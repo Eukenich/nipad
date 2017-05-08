@@ -5,6 +5,22 @@
 #navbarButtonAdventure{
     margin-top: 5px;
 }
-#navbar2{
-    margin-top: 20px;
+
+#navbarButtonSave{
+    margin-top: 5px;
 }
+
+#bookmarkPanel {
+    margin-left: 1px;
+    margin-top: -19px;
+}
+#bookmark{
+    height: 26px;
+    /*margin-right: 10px;*/
+}
+#bookmarkClose{
+ /*   right: 20px;
+    margin-top: 3px;*/
+    /*margin-left: 10px;*/
+}
+
