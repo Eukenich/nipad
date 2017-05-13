@@ -37,7 +37,7 @@
         <label> Opened text: {{currTextName}}</label>
         <div class="" ng-repeat="text in openedTabs">
             <button id="bookmark" class="col-sm-2" ng-mousedown="saveCurrentTab(currTextName)"
-                    ng-click="openCurrentTab(text)"><label>{{text}} </label></button>
+                    ng-click="openCurrentTab(text)"><label style="cursor: pointer;">{{text}} </label></button>
             <span class="col-md-1 " ng-click="closeNewTab(text)" id="bookmarkClose">X</span>
         </div>
         <button data-toggle="modal" data-target="#myModal" ng-click="">+</button>
