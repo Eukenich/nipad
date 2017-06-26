@@ -1,0 +1,25 @@
+<div class="modal" id="mLoad" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Adventure v0.0080 </h4>
+            </div>
+            <div >
+                <label>Create new file</label>
+                <input ng-model="addTextTitle">
+                <button type="button" class="btn btn-default" ng-click="textFill.title=addTextTitle"
+                        data-dismiss="modal">Create new</button>
+            </div>
+            <div>
+                <div ng-repeat="text in textsArray track by text.title ">
+                    <button ng-click="textFill.body=text.title" data-dismiss="modal">{{text.title}}</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

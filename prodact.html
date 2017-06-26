@@ -2,7 +2,7 @@
 INDEX.HTML
 ###################-->
 <!DOCTYPE html>
-<html ng-app="nikitaPad" lang="en">
+<html ng-app="adventure" lang="en">
 <head>
     <title>NiPad</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
@@ -18,7 +18,7 @@ INDEX.HTML
                      INDEX.JS
     #################################-->
     <script>
-        angular.module('nikitaPad', ['ui.bootstrap.modal'])
+        angular.module('adventure', ['ui.bootstrap.modal'])
             .controller('npCtrl', function ($scope) {
                 $scope.localKeys = localStorage.localkeys
                 $scope.texts = (angular.isUndefined($scope.localKeys)) ? [] : $scope.localKeys.split(',')

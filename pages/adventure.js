@@ -1,7 +1,7 @@
 /**
  * Created by Admin on 05.05.2017.
  */
-angular.module('nikitaPad', ['ui.bootstrap.modal'])
+angular.module('adventure', ['ui.bootstrap.modal'])
     .controller('npCtrl', function ($scope) {
 
         $scope.getRandomSpan = function () {

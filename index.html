@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="nikitaPad" lang="en">
+<html ng-app="adventure" lang="en">
 
 <head>
     <title>NiPad</title>
@@ -11,21 +11,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="index.js"></script>
+    <script src="https://use.fontawesome.com/5e9180cf11.js"></script>
     <link rel="stylesheet" href="index.css">
     <!--<link rel="import" href="modals/modal.html">-->
 
 </head>
 <body data-ng-app="">
 <div class="container" ng-controller="npCtrl">
-
     <div ng-include="'modals/modal.html'"></div>
+    <div ng-include="'modals/save.html'"></div>
+    <div ng-include="'modals/load.html'"></div>
+<!--
     <nav class="navbar navbar-default">
-
-        <button id="navbarButtonMenu" type="button" class="btn btn-default"><span
+    <button id="navbarButtonMenu" type="button" class="btn btn-default"><span
                 class="glyphicon glyphicon-expand" aria-hidden="true"></span>Menu
         </button>
         <a href="./pages/adventure.html">
-            <span id="navbarButtonAdventure" class="btn btn-default btn-sm"><img src="glyphicons-323-playing-dices.png"></span>
+             <span id="navbarButtonAdventure" class="btn btn-default btn-sm">
+                 <i class="fa fa-free-code-camp" aria-hidden="true"></i>Adventure
+             </span>
         </a>
         <button id="navbarButtonSave" type="button" class="btn btn-default" ng-click="uploadText(currTextName,loaded)">
             <span class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span> Save
@@ -42,12 +46,20 @@
         </div>
         <button data-toggle="modal" data-target="#myModal" ng-click="">+</button>
     </div>
-
+-->
     <!--<button ng-click="logThis()"></button>-->
 
     <div class="form-group">
-        <textarea class="form-control" ng-model="loaded" cols="30" rows="10"></textarea>
+        <textarea class="form-control" ng-model="textFill.body" cols="30" rows="10"></textarea>
     </div>
+    <button data-toggle="modal" data-target="#mSave" ng-click="">truly save</button>
+    <button data-toggle="modal" data-target="#mLoad" ng-click="">truly load</button>
+<!--
+    >>>{{textsArray}}
+-->
+<!--
+    <button ng-click="logThis(textFill)">ng-click="textFill.title=addTextTitle</button>
+-->
 
 </div>
 </body>
