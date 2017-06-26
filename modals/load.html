@@ -15,7 +15,8 @@
             </div>
             <div>
                 <div ng-repeat="text in textsArray track by text.title ">
-                    <button ng-click="textFill.body=text.title" data-dismiss="modal">{{text.title}}</button>
+                    <button ng-click="textFill.body=text.body" data-dismiss="modal">{{text.title}}</button>
+                    <button ng-click="deleteText(text)">X</button>
                 </div>
 
             </div>

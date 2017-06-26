@@ -9,20 +9,23 @@
             </div>
             <div ng-show="showTitle">
                 <label for="addTextTitle"> Edit title</label>
-                <input id="addTextTitle" ng-model="addTextTitle">
+                <input id="addTextTitle" ng-model="textFill.title">
                 <button class="btn btn-default" ng-disabled="!addTextTitle" ng-click="textFill.title=addTextTitle;
                 showTitle=!showTitle">save</button>
 
             </div>
             <div>
-                <p ng-show="titleValidation(textFill)"> Title already exist </p>
+                <p >{{errMesage}} </p>
+<!--
+                {{textFill.title}}
+-->
                 <button class="btn btn-default" ng-hide="showTitle" ng-click="textFill.title=addTextTitle;
                 showTitle=!showTitle">Edit title</button>
-                <button ng-hide="showTitle" class="btn btn-default" ng-disabled="titleValidation(textFill)"
-                        ng-click="saveText(textFill)"> Save {{textFill.title}}</button>
+                <button  ng-hide="showTitle" class="btn btn-default"
+                        ng-click="saveText(textFill)" > Save {{textFill.title}}</button>
             </div>
 <!--
-            this is text&ndash >>>> {{textFill}}
+            >>>> {{textFill}}
 -->
         </div>
 
