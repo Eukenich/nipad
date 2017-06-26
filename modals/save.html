@@ -8,8 +8,8 @@
                 <h4 class="modal-title">Adventure v0.0080 </h4>
             </div>
             <div ng-show="showTitle">
-                <label for="addTextTitle"> Edit title</label>
-                <input id="addTextTitle" ng-model="textFill.title">
+                <label> Edit title</label>
+                <input ng-model="addTextTitle">
                 <button class="btn btn-default" ng-disabled="!addTextTitle" ng-click="textFill.title=addTextTitle;
                 showTitle=!showTitle">save</button>
 

@@ -11,10 +11,10 @@
 
     $scope.saveText = (text) => {
       if (text.body === undefined) text.body = ''
-      let res = false
+      let res = 0
       $scope.textArray.forEach(savedText => {
         if (savedText.title === text.title) {
-          res = true
+          res = 1
           $scope.errMesage = 'Title already exist!'
           console.log('1')
         }
